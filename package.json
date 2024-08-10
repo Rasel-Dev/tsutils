@@ -1,20 +1,25 @@
 {
-	"name": "ts-rollup-jest",
+	"name": "tsutils",
 	"version": "1.0.0",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
 	"declaration": "dist/index.d.ts",
 	"scripts": {
-		"start": "rollup -c rollup.config.js -w",
-		"build": "rollup -c rollup.config.js",
-		"test": "jest"
+		"clean": "rimraf dist",
+		"start": "yarn run clean && rollup -c rollup.config.js -w",
+		"test": "jest",
+		"build": "yarn run clean && yarn run test && rollup -c rollup.config.js"
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@types/jest": "^29.5.12",
 		"jest": "^29.7.0",
+		"rimraf": "^6.0.1",
 		"rollup": "^4.20.0",
+		"rollup-plugin-typescript2": "^0.36.0",
 		"ts-jest": "^29.2.4",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4"
